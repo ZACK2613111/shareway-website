@@ -1,26 +1,71 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cyan Blue - Primary (Drivers) */
+  --cyan-50: #f0f9fc;
+  --cyan-100: #e0f2f7;
+  --cyan-500: #0BAFD4;
+  --cyan-600: #0998bf;
+  --cyan-700: #087aaa;
+  
+  /* Turquoise Green - Secondary (Passengers) */
+  --teal-50: #f0fdf9;
+  --teal-100: #ccfbef;
+  --teal-500: #04DFC3;
+  --teal-600: #04c7b5;
+  --teal-700: #03a89a;
+  
+  /* Neutrals */
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-400: #94a3b8;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --white: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Geist', sans-serif;
+  --radius: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-white text-slate-900;
+  }
+  
+  .dark body {
+    @apply bg-slate-900 text-white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .gradient-cyan-teal {
+    background: linear-gradient(to right, rgb(11, 175, 212), rgb(4, 223, 195));
+  }
+  
+
+  .glass-dark {
+    @apply bg-slate-800/80 backdrop-blur-md border border-slate-700/20;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300;
+    background: linear-gradient(to right, rgb(11, 175, 212), rgb(4, 223, 195));
+  }
+  
+  .btn-primary:hover {
+    @apply shadow-lg;
+    box-shadow: 0 20px 25px -5px rgba(11, 175, 212, 0.4);
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 rounded-lg font-semibold border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-50 transition-all duration-300;
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(11, 175, 212, 0.1);
+  }
 }
